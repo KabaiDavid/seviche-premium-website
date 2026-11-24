@@ -1,0 +1,144 @@
+/* ─────────────────────────────────────────────────────────────
+   SEVICHE — design tokens
+   Warm Latin editorial: burgundy, charcoal, ivory; terracotta,
+   olive and stone as supporting earth tones; brass used sparingly.
+   ───────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Bodoni Moda';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/bodoni-moda-latin-opsz-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Bodoni Moda';
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/bodoni-moda-latin-opsz-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/hanken-grotesk-latin-wght-normal.woff2') format('woff2');
+}
+/* Metric-matched fallbacks keep layout stable while web fonts swap in (CLS). */
+@font-face {
+  font-family: 'Bodoni Fallback';
+  src: local('Georgia'), local('Times New Roman');
+  size-adjust: 96%;
+  ascent-override: 95%;
+  descent-override: 25%;
+}
+@font-face {
+  font-family: 'Hanken Fallback';
+  src: local('Arial'), local('Helvetica');
+  size-adjust: 98%;
+  ascent-override: 98%;
+  descent-override: 26%;
+}
+
+:root {
+  /* — Core palette — */
+  --burgundy-900: #2a0c11;
+  --burgundy-800: #3d1219;
+  --burgundy-700: #521a22;
+  --burgundy-600: #6b2430;
+  --burgundy-500: #85303d;
+  --charcoal-950: #0e0c0c;
+  --charcoal-900: #151213;
+  --charcoal-800: #1f1b1b;
+  --charcoal-700: #2c2626;
+  --ivory-50: #fbf8f2;
+  --ivory-100: #f4eee3;
+  --ivory-200: #ebe2d3;
+  --terracotta-600: #9e4a30;
+  --terracotta-500: #b85b3c;
+  --terracotta-400: #cf7a58;
+  --olive-700: #4a4a2a;
+  --olive-600: #5e5e36;
+  --olive-400: #8f8c5e;
+  --stone-400: #b9ad9b;
+  --stone-300: #cfc4b3;
+  --stone-200: #e0d7c9;
+  --brass-500: #a8875a;
+  --brass-400: #c0a074;
+
+  /* — Semantic: surfaces — */
+  --bg-ink: var(--charcoal-950);
+  --bg-dark: var(--charcoal-900);
+  --bg-wine: var(--burgundy-800);
+  --bg-wine-deep: var(--burgundy-900);
+  --bg-light: var(--ivory-100);
+  --bg-paper: var(--ivory-50);
+  --bg-stone: var(--stone-200);
+
+  /* — Semantic: text — */
+  --text-on-dark: #f1ebe0;
+  --text-on-dark-muted: rgba(241, 235, 224, 0.68);
+  --text-on-dark-faint: rgba(241, 235, 224, 0.6);
+  --text-on-light: #1d1718;
+  --text-on-light-muted: #5d514d;
+  --text-on-light-faint: #6f625b;
+
+  /* — Accents — */
+  --accent: var(--terracotta-500);
+  --accent-on-light: var(--terracotta-600);
+  --accent-wine: var(--burgundy-600);
+  --accent-brass: var(--brass-400);
+  --accent-olive: var(--olive-600);
+
+  /* — Lines — */
+  --line-dark: rgba(241, 235, 224, 0.16);
+  --line-dark-strong: rgba(241, 235, 224, 0.32);
+  --line-light: rgba(29, 23, 24, 0.14);
+  --line-light-strong: rgba(29, 23, 24, 0.3);
+
+  /* — Buttons — */
+  --btn-primary-bg: var(--burgundy-600);
+  --btn-primary-bg-hover: var(--burgundy-500);
+  --btn-primary-text: var(--ivory-50);
+  --btn-accent-bg: var(--terracotta-500);
+  --btn-accent-bg-hover: var(--terracotta-400);
+  --focus-ring: var(--brass-400);
+
+  /* — Navigation — */
+  --nav-h: 76px;
+  --nav-bg-solid: rgba(21, 18, 19, 0.92);
+
+  /* — Typography — */
+  --font-display: 'Bodoni Moda', 'Bodoni Fallback', 'Didot', Georgia, serif;
+  --font-body: 'Hanken Grotesk', 'Hanken Fallback', system-ui, sans-serif;
+  --fs-mega: clamp(3.2rem, 1.2rem + 8.6vw, 10.5rem);
+  --fs-display: clamp(2.6rem, 1.4rem + 5vw, 6.6rem);
+  --fs-h1: clamp(2.3rem, 1.5rem + 3.4vw, 4.8rem);
+  --fs-h2: clamp(1.9rem, 1.35rem + 2.3vw, 3.6rem);
+  --fs-h3: clamp(1.4rem, 1.15rem + 1vw, 2rem);
+  --fs-lead: clamp(1.08rem, 1rem + 0.35vw, 1.3rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9375rem;
+  --fs-micro: 0.78rem;
+
+  /* — Space & layout — */
+  --gutter: clamp(1.25rem, 0.6rem + 3vw, 4rem);
+  --section-y: clamp(5.5rem, 3rem + 9vw, 11rem);
+  --max-w: 1480px;
+  --max-text: 38rem;
+  --radius: 2px;
+
+  /* — Motion — */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 220ms;
+  --dur-med: 600ms;
+  --dur-slow: 1300ms;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --nav-h: 64px;
+  }
+}

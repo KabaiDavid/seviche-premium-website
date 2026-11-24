@@ -1,0 +1,7 @@
+# Preserve URLs from the previous Squarespace site
+/home              /                 301
+/dinner-a-movie    /events           301
+/services-2-1      /gift-cards       301
+/events/*          /events           301
+/cart              /gift-cards       302
+/index             /                 301
