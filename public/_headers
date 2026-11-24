@@ -16,3 +16,11 @@
 
 /video/*
   Cache-Control: public, max-age=2592000
+
+# Preview addresses (*.pages.dev) stay out of search results;
+# the real domain is unaffected once it is connected.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex

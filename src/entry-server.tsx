@@ -5,6 +5,10 @@ import { SITE_URL } from './data/site';
 
 export { ROUTES };
 
+// On Cloudflare Pages builds, CF_PAGES_URL is the deployment's own address, so
+// link previews (og:image) work on the preview before the real domain moves.
+const ASSET_BASE = (process.env.CF_PAGES_URL || SITE_URL).replace(/\/$/, '');
+
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 export function render(route: Route) {
@@ -30,7 +34,7 @@ export function render(route: Route) {
     `<meta property="og:title" content="${esc(route.title)}">`,
     `<meta property="og:description" content="${esc(route.description)}">`,
     `<meta property="og:url" content="${canonical}">`,
-    `<meta property="og:image" content="${SITE_URL}/og-image.jpg">`,
+    `<meta property="og:image" content="${ASSET_BASE}/og-image.jpg">`,
     `<meta property="og:image:width" content="1200">`,
     `<meta property="og:image:height" content="630">`,
     `<meta property="og:image:alt" content="Fresh ingredients being prepared in the Seviche kitchen">`,
@@ -39,7 +43,7 @@ export function render(route: Route) {
     `<meta name="twitter:site" content="@sevichelatinres">`,
     `<meta name="twitter:title" content="${esc(route.title)}">`,
     `<meta name="twitter:description" content="${esc(route.description)}">`,
-    `<meta name="twitter:image" content="${SITE_URL}/og-image.jpg">`,
+    `<meta name="twitter:image" content="${ASSET_BASE}/og-image.jpg">`,
     ...schemas.map((s) => `<script type="application/ld+json">${JSON.stringify(s).replace(/</g, '\\u003c')}</script>`),
   ].join('\n    ');
   return { html, head };
